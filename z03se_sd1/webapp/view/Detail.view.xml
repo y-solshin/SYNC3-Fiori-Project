@@ -1,0 +1,62 @@
+<mvc:View controllerName="z03sesd1.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+		xmlns:t="sap.ui.table">
+	<Page>
+		<m:HBox>
+			<m:items id='idTitle'>
+				<c:Icon src="sap-icon://activity-items" size="1.25rem"/>
+				<m:Title text="" titleStyle="H3" class="sapUiTinyMarginBeginEnd"/>
+			</m:items>
+		</m:HBox>
+		<content>
+			<t:Table
+				selectionMode="MultiToggle"
+				paste="onPaste"
+				ariaLabelledBy="title">
+				<t:extension>
+					<OverflowToolbar style="Clear">
+						<Title id="title" text="Products"/>
+					</OverflowToolbar>
+				</t:extension>
+				<t:columns>
+					<t:Column width="11rem">
+						<Label text="제품명" />
+						<t:template>
+							<Text text="{Product}" wrapping="false" />
+						</t:template>
+					</t:Column>
+					<t:Column width="11rem">
+						<Label text="수량" />
+						<t:template>
+							<Input value="{Amount}"/>
+						</t:template>
+					</t:Column>
+					<t:Column width="11rem">
+						<Label text="가격" />
+						<t:template>
+							<Input value="{Price}"/>
+						</t:template>
+					</t:Column>
+					<t:Column width="11rem">
+						<Label text="배송현황" />
+						<t:template>
+							<m:items>
+							<c:Icon id='idIcon' src="" />
+							<m:text id='idDeliv' text="{Delivery_st}" titleStyle="H3" class="sapUiTinyMarginBeginEnd"/>
+						</m:items>
+						</t:template>
+					</t:Column>
+					<t:Column width="11rem">
+						<Label text="송장번호" />
+						<t:template>
+							<Input value="{Invoice_Num}"/>
+						</t:template>
+					</t:Column>
+				</t:columns>
+			</t:Table>
+		</content>
+
+
+		</Page>
+</mvc:View>

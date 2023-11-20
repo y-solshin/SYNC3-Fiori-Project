@@ -1,0 +1,95 @@
+<mvc:View controllerName="z03sesd1.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+   	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+    <Page id="page" title="{i18n>title}">
+		<content>
+	<VBox class="sapUiSmallMargin">
+		<f:SimpleForm width='500px'
+			editable="false"
+			layout="ResponsiveGridLayout"
+			title="가입정보"
+			labelSpanXL="4"
+			labelSpanL="3"
+			labelSpanM="4"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="4"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="2"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false">
+			<f:content>
+				<Label text="핸드폰번호" />
+				<Text  text="{CustTel}" />
+				<Label text="이메일" />
+				<Text text="{Email}" />
+				<Label text="주소" />
+				<Text text="{Postcode} {CustAddr} {DetailAddr}" />
+				<Button text='개인정보변경' type='Neutral' press='ButtonPress' />
+			</f:content>
+				
+		</f:SimpleForm>
+	</VBox>
+
+		<f:SimpleForm 
+		width="800px"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			title="주문이력"
+			labelSpanXL="4"
+			labelSpanL="3"
+			labelSpanM="4"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="4"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="2"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false">
+			<f:content>
+			<Table id="idOrderTable"
+			 selectionChange="itemEvent"
+			 items="{path: '/OrderHSet',
+					filters : [{
+						path : 'Cust_Id',
+						operator : 'EQ',
+						value1:'C00000001' 
+						}] }">
+						<!--value1을 모델에 넣어서 전달?-->
+				<columns>
+					<Column>
+						<Text text="주문일자" />
+					</Column>
+					<Column>
+						<Text text="오더번호" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem vAlign="Middle">
+						<cells>
+							<Text
+								text="{
+									path : 'OrderDt',
+									formatter : '.fnDateToString' }"  />
+							<Text
+								text="{OrderNum}" />		 
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			</f:content>
+				
+		</f:SimpleForm>
+
+		</content>
+	</Page>
+</mvc:View>
